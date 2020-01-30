@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { REVERSE_DRAWER } from "../../store/mutation-types";
+import { REVERSE_DRAWER } from "../../../store/mutation-types";
 
 export default {
   name: "AppBar",
