@@ -1,11 +1,12 @@
-import Dashboard from "../views/Dashboard";
+import Layout from "../components/layout/Layout";
+
 const renderRouterView = { render: h => h("router-view") };
 
 const routes = [
   {
-    path: "/",
-    redirect: "/dashboard",
-    hideInMenu: true
+    path: "/login",
+    hideInMenu: true,
+    component: () => import(/* webpackChunkName: "Github" */ "../views/Login")
   },
   {
     path: "/404",
@@ -15,17 +16,25 @@ const routes = [
       import(/* webpackChunkName: "Github" */ "../views/NotFound")
   },
   {
-    path: "/dashboard",
-    name: "Dashboard",
-    meta: { title: "Dashboard", icon: "mdi-view-dashboard" },
-    component: Dashboard
+    path: "/",
+    redirect: "/dashboard",
+    component: Layout,
+    children: [
+      {
+        path: "dashboard",
+        name: "Dashboard",
+        meta: { title: "Dashboard", icon: "mdi-view-dashboard" },
+        component: () =>
+          import(/* webpackChunkName: "Github" */ "../views/Dashboard")
+      }
+    ]
   },
   {
     path: "/examples",
     name: "Examples",
     meta: { title: "Examples", icon: "mdi-folder-table" },
     redirect: { name: "Form" },
-    component: renderRouterView,
+    component: Layout,
     children: [
       {
         path: "form",
@@ -48,7 +57,7 @@ const routes = [
     name: "Nested",
     meta: { title: "Nested", icon: "mdi-xbox-controller-menu" },
     redirect: { name: "Menu1" },
-    component: renderRouterView,
+    component: Layout,
     children: [
       {
         path: "menu1",
@@ -122,9 +131,16 @@ const routes = [
   },
   {
     path: "/github",
-    name: "Github",
-    meta: { title: "Github", icon: "mdi-github-circle" },
-    component: () => import(/* webpackChunkName: "Github" */ "../views/Github")
+    component: Layout,
+    children: [
+      {
+        path: "github",
+        name: "Github",
+        meta: { title: "Github", icon: "mdi-github-circle" },
+        component: () =>
+          import(/* webpackChunkName: "Github" */ "../views/Github")
+      }
+    ]
   },
   {
     path: "*",

@@ -1,27 +1,11 @@
 <template>
-  <v-app id="inspire">
-    <!-- 顶部导航栏-->
-    <app-bar />
-    <!-- 侧边导航栏 -->
-    <navigation-bar />
-    <!--  内容区  -->
-    <v-content>
-      <v-container fluid class="mt-4 ml-4">
-        <v-scroll-x-transition mode="out-in">
-          <keep-alive> <router-view /></keep-alive>
-        </v-scroll-x-transition>
-      </v-container>
-    </v-content>
-  </v-app>
+  <div id="app">
+    <router-view />
+  </div>
 </template>
 
 <script>
-import NavigationBar from "./components/layout/navigation/NavigationBar";
-import AppBar from "./components/layout/app/AppBar";
-
 export default {
-  name: "App",
-  data: () => ({}),
-  components: { NavigationBar, AppBar }
+  name: "App"
 };
 </script>
