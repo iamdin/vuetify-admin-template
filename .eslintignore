@@ -1,0 +1,7 @@
+# /node_modules/* and in the project root are ignored by default
+
+# Ignore built files except build/index.js
+build/*
+public/*
+doc/*
+src/assets/*
