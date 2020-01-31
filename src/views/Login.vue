@@ -16,7 +16,7 @@
                     name="username"
                     prepend-icon="mdi-account"
                     type="text"
-                    v-model="username"
+                    v-model="loginForm.username"
                     :rules="[rules.required]"
                   ></v-text-field>
 
@@ -26,7 +26,7 @@
                     name="password"
                     prepend-icon="mdi-lock"
                     :type="passwordDisplay ? 'text' : 'password'"
-                    v-model="password"
+                    v-model="loginForm.password"
                     :append-icon="passwordDisplay ? 'mdi-eye' : 'mdi-eye-off'"
                     @click:append="passwordDisplay = !passwordDisplay"
                     :rules="[rules.required]"
@@ -35,7 +35,12 @@
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn color="primary" @click="login">Login</v-btn>
+                <v-btn
+                  :loading="loginLoading"
+                  color="primary"
+                  @click="userLogin"
+                  >Login</v-btn
+                >
               </v-card-actions>
             </v-card>
           </v-flex>
@@ -50,15 +55,27 @@ export default {
   name: "Login",
   data: () => ({
     passwordDisplay: false,
-    username: "admin",
-    password: "123456",
+    loginLoading: false,
+    loginForm: {
+      username: "admin",
+      password: "123456"
+    },
     rules: {
       required: value => !!value || "Required."
     }
   }),
   methods: {
-    login() {
-      this.$router.push("/");
+    userLogin() {
+      const _this = this;
+      _this.loginLoading = true;
+      _this.$store.dispatch("LOGIN", _this.loginForm).then(res => {
+        if (res.code === 200) {
+          setTimeout(() => {
+            _this.loginLoading = false;
+            _this.$router.push("/");
+          }, 1000);
+        }
+      });
     }
   }
 };

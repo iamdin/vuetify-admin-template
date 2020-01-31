@@ -5,15 +5,16 @@ const renderRouterView = { render: h => h("router-view") };
 const routes = [
   {
     path: "/login",
+    name: "Login",
     hideInMenu: true,
-    component: () => import(/* webpackChunkName: "Github" */ "../views/Login")
+    component: () => import(/* webpackChunkName: "Login" */ "../views/Login")
   },
   {
     path: "/404",
     name: "NotFound",
     hideInMenu: true,
     component: () =>
-      import(/* webpackChunkName: "Github" */ "../views/NotFound")
+      import(/* webpackChunkName: "NotFound" */ "../views/NotFound")
   },
   {
     path: "/",
@@ -25,7 +26,7 @@ const routes = [
         name: "Dashboard",
         meta: { title: "Dashboard", icon: "mdi-view-dashboard" },
         component: () =>
-          import(/* webpackChunkName: "Github" */ "../views/Dashboard")
+          import(/* webpackChunkName: "Dashboard" */ "../views/Dashboard")
       }
     ]
   },

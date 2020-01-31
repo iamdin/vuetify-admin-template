@@ -23,13 +23,11 @@
 </template>
 
 <script>
-import { REVERSE_DRAWER } from "../../../store/mutation-types";
-
 export default {
   name: "AppBar",
   methods: {
     navIconClick() {
-      this.$store.commit(REVERSE_DRAWER);
+      this.$store.commit("REVERSE_DRAWER");
     }
   }
 };

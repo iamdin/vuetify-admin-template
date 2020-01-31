@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import { REVERSE_DRAWER } from "./mutation-types";
+import user from "./user";
 
 Vue.use(Vuex);
 
@@ -9,10 +9,10 @@ export default new Vuex.Store({
     navigationDrawer: null
   },
   mutations: {
-    [REVERSE_DRAWER](state) {
+    REVERSE_DRAWER(state) {
       state.navigationDrawer = !state.navigationDrawer;
     }
   },
   actions: {},
-  modules: {}
+  modules: { user }
 });
