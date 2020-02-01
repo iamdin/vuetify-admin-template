@@ -1,15 +1,20 @@
 import mutations from "./mutations";
 import actions from "./actions";
-import getters from "./getters";
 import { getToken } from "../../util/cookie";
 
 export default {
+  namespaced: true,
   state: {
-    username: "",
     token: getToken(),
-    avatar: ""
+    info: {
+      name: "",
+      avatar: "",
+      roles: []
+    }
   },
   mutations,
   actions,
-  getters
+  getters: {
+    userRole: state => state.info.roles
+  }
 };

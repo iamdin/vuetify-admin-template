@@ -1,20 +1,43 @@
-import { login } from "../../api/user";
-import { setToken } from "../../util/cookie";
+import { getUserInfo, login } from "../../api/user";
+import { removeToken, setToken } from "../../util/cookie";
 
 export default {
   LOGIN({ commit }, payload) {
-    // eslint-disable-next-line no-unused-vars
     return new Promise((resolve, reject) => {
       login(payload)
         .then(res => {
+          const { date } = res;
+          commit("SET_TOKEN", date.token);
+          setToken(date.token);
+          resolve(res);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  },
+  GET_USER_INFO({ commit }) {
+    return new Promise((resolve, reject) => {
+      getUserInfo()
+        .then(res => {
           const { data } = res;
-          commit("SET_TOKEN", data.token);
-          setToken(data.token);
+          if (data.roles && data.roles.length > 0) {
+            commit("SET_INFO", data);
+          } else {
+            reject("getInfo: roles must be a non-null array !");
+          }
           resolve(data);
         })
         .catch(err => {
           reject(err);
         });
+    });
+  },
+  FONT_LOGIN_OUT({ commit }) {
+    return new Promise(resolve => {
+      removeToken();
+      commit("SET_TOKEN", "");
+      resolve();
     });
   }
 };

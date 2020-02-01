@@ -1,71 +1,52 @@
-import Layout from "../components/layout/Layout";
-
 const renderRouterView = { render: h => h("router-view") };
 
-const routes = [
-  {
-    path: "/login",
-    name: "Login",
-    hideInMenu: true,
-    component: () => import(/* webpackChunkName: "Login" */ "../views/Login")
-  },
-  {
-    path: "/404",
-    name: "NotFound",
-    hideInMenu: true,
-    component: () =>
-      import(/* webpackChunkName: "NotFound" */ "../views/NotFound")
-  },
-  {
-    path: "/",
-    redirect: "/dashboard",
-    component: Layout,
-    children: [
-      {
-        path: "dashboard",
-        name: "Dashboard",
-        meta: { title: "Dashboard", icon: "mdi-view-dashboard" },
-        component: () =>
-          import(/* webpackChunkName: "Dashboard" */ "../views/Dashboard")
-      }
-    ]
-  },
+export default [
   {
     path: "/examples",
     name: "Examples",
-    meta: { title: "Examples", icon: "mdi-folder-table" },
+    meta: {
+      title: "Examples",
+      icon: "mdi-folder-table",
+      roles: ["admin"]
+    },
     redirect: { name: "Form" },
-    component: Layout,
+    component: () =>
+      import(/* webpackChunkName: "Layout" */ "@/components/layout/Layout"),
     children: [
       {
         path: "form",
         name: "Form",
-        meta: { title: "Form", icon: "mdi-id-card" },
+        meta: { title: "Form", icon: "mdi-id-card", roles: ["user"] },
         component: () =>
-          import(/* webpackChunkName: "Form" */ "../views/examples/Form")
+          import(/* webpackChunkName: "Form" */ "@/views/examples/Form")
       },
       {
         path: "table",
         name: "Table",
         meta: { title: "Table", icon: "mdi-table" },
         component: () =>
-          import(/* webpackChunkName: "Table" */ "../views/examples/Table")
+          import(/* webpackChunkName: "Table" */ "@/views/examples/Table")
       }
     ]
   },
   {
     path: "/nested",
     name: "Nested",
-    meta: { title: "Nested", icon: "mdi-xbox-controller-menu" },
+    meta: {
+      title: "Nested",
+      icon: "mdi-xbox-controller-menu",
+      roles: ["editor"]
+    },
     redirect: { name: "Menu1" },
-    component: Layout,
+    component: () =>
+      import(/* webpackChunkName: "Layout" */ "@/components/layout/Layout"),
     children: [
       {
         path: "menu1",
         name: "Menu1",
-        meta: { title: "Menu1" },
+        meta: { title: "Menu1", roles: ["super_admin"] },
         component: () =>
-          import(/* webpackChunkName: "Menu1" */ "../views/nested/Menu1")
+          import(/* webpackChunkName: "Menu1" */ "@/views/nested/Menu1")
       },
       {
         path: "menu2",
@@ -80,7 +61,7 @@ const routes = [
             meta: { title: "Menu2-1" },
             component: () =>
               import(
-                /* webpackChunkName: "Menu2_1" */ "../views/nested/menu2/Menu2_1"
+                /* webpackChunkName: "Menu2_1" */ "@/views/nested/menu2/Menu2_1"
               )
           },
           {
@@ -96,7 +77,7 @@ const routes = [
                 meta: { title: "Menu2-2-1" },
                 component: () =>
                   import(
-                    /* webpackChunkName: "Menu2_2_1" */ "../views/nested/menu2/menu2-2/Menu2_2_1"
+                    /* webpackChunkName: "Menu2_2_1" */ "@/views/nested/menu2/menu2-2/Menu2_2_1"
                   )
               },
               {
@@ -105,7 +86,7 @@ const routes = [
                 meta: { title: "Menu2-2-2" },
                 component: () =>
                   import(
-                    /* webpackChunkName: "Menu2_2_2" */ "../views/nested/menu2/menu2-2/Menu2_2_2"
+                    /* webpackChunkName: "Menu2_2_2" */ "@/views/nested/menu2/menu2-2/Menu2_2_2"
                   )
               }
             ]
@@ -116,7 +97,7 @@ const routes = [
             meta: { title: "Menu2-3" },
             component: () =>
               import(
-                /* webpackChunkName: "Menu2_3" */ "../views/nested/menu2/Menu2_3"
+                /* webpackChunkName: "Menu2_3" */ "@/views/nested/menu2/Menu2_3"
               )
           }
         ]
@@ -126,28 +107,8 @@ const routes = [
         name: "Menu3",
         meta: { title: "Menu3" },
         component: () =>
-          import(/* webpackChunkName: "Menu3" */ "../views/nested/Menu3")
+          import(/* webpackChunkName: "Menu3" */ "@/views/nested/Menu3")
       }
     ]
-  },
-  {
-    path: "/github",
-    component: Layout,
-    children: [
-      {
-        path: "github",
-        name: "Github",
-        meta: { title: "Github", icon: "mdi-github-circle" },
-        component: () =>
-          import(/* webpackChunkName: "Github" */ "../views/Github")
-      }
-    ]
-  },
-  {
-    path: "*",
-    redirect: "/404",
-    hideInMenu: true
   }
 ];
-
-export default routes;

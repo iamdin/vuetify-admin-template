@@ -63,8 +63,8 @@ export default {
     passwordDisplay: false,
     loginLoading: false,
     loginForm: {
-      username: "",
-      password: ""
+      username: "admin",
+      password: "123456"
     },
     rules: {
       required: value => !!value || "Required."
@@ -79,7 +79,7 @@ export default {
       // 表单验证成功
       _this.loginLoading = true;
       _this.$store
-        .dispatch("LOGIN", _this.loginForm)
+        .dispatch("user/LOGIN", _this.loginForm)
         .then(res => {
           if (res.code === 200) {
             setTimeout(() => {

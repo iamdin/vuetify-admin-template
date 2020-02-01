@@ -70,7 +70,7 @@ export default {
      * @returns {boolean}
      */
     isLevelOneRoute(route) {
-      return this.$router.options.routes.includes(route);
+      return this.$store.getters["permission/routes"].includes(route);
     },
     /**
      * 判断当前路径对象是否被渲染为 list-group

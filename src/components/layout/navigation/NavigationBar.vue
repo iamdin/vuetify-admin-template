@@ -5,7 +5,7 @@
     mobile-break-point="600"
     :expand-on-hover="$vuetify.breakpoint.smOnly"
   >
-    <nested-list :propsRoutes="$router.options.routes" />
+    <nested-list :propsRoutes="$store.getters['permission/routes']" />
   </v-navigation-drawer>
 </template>
 
@@ -15,8 +15,8 @@ import NestedList from "./NestedList";
 export default {
   name: "NavigationBar",
   components: { NestedList },
-  data() {
-    return {};
+  created() {
+    console.log(this.$store.getters["permission/routes"]);
   }
 };
 </script>
