@@ -10,7 +10,7 @@
                 <v-spacer></v-spacer>
               </v-toolbar>
               <v-card-text>
-                <v-form>
+                <v-form ref="login_form">
                   <v-text-field
                     label="Username"
                     name="username"
@@ -47,6 +47,12 @@
         </v-layout>
       </v-container>
     </v-content>
+    <v-snackbar top color="primary" v-model="snackbar">
+      {{ snackbarText }}
+      <v-btn text @click="snackbar = false">
+        Close
+      </v-btn>
+    </v-snackbar>
   </v-app>
 </template>
 
@@ -57,25 +63,44 @@ export default {
     passwordDisplay: false,
     loginLoading: false,
     loginForm: {
-      username: "admin",
-      password: "123456"
+      username: "",
+      password: ""
     },
     rules: {
       required: value => !!value || "Required."
-    }
+    },
+    snackbar: false,
+    snackbarText: ""
   }),
   methods: {
     userLogin() {
       const _this = this;
+      if (!_this.$refs.login_form.validate()) return;
+      // 表单验证成功
       _this.loginLoading = true;
-      _this.$store.dispatch("LOGIN", _this.loginForm).then(res => {
-        if (res.code === 200) {
-          setTimeout(() => {
-            _this.loginLoading = false;
-            _this.$router.push("/");
-          }, 1000);
-        }
-      });
+      _this.$store
+        .dispatch("LOGIN", _this.loginForm)
+        .then(res => {
+          if (res.code === 200) {
+            setTimeout(() => {
+              _this.loginLoading = false;
+              _this.$router.push("/");
+            }, 1000);
+          } else {
+            _this.snackbarShow(res.msg);
+          }
+        })
+        .catch(err => {
+          console.error(err);
+          _this.snackbarShow(err);
+        })
+        .finally(() => {
+          _this.loginLoading = false;
+        });
+    },
+    snackbarShow(text) {
+      this.snackbar = true;
+      this.snackbarText = text;
     }
   }
 };
