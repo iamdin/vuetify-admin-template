@@ -1,5 +1,5 @@
 import actions from "./actions";
-import constRouteMap from "../../router/common";
+import constRouteMap, { NotFound } from "../../router/common";
 
 export default {
   namespaced: true,
@@ -9,6 +9,7 @@ export default {
   },
   mutations: {
     SET_ROUTES: (state, routes) => {
+      routes.push(NotFound);
       state.asyncRoutes = routes;
       state.routes = constRouteMap.concat(routes);
     }

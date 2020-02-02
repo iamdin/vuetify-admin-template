@@ -1,7 +1,7 @@
 import asyncRoutesMap from "../../router/modules";
 
 export default {
-  async GENERATE_ROUTES({ commit }, roles) {
+  GENERATE_ROUTES({ commit }, roles) {
     console.log("当前角色：", ...roles);
     commit("SET_ROUTES", generateRoutes(roles));
   }

@@ -43,3 +43,9 @@ export default [
     ]
   }
 ];
+
+export const NotFound = {
+  path: "*",
+  redirect: "/404",
+  hideInMenu: true
+};
