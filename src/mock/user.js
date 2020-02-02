@@ -3,7 +3,7 @@ export default {
   /** 用户登陆 */
   login: Mock.mock("/login", {
     code: 200,
-    date: {
+    data: {
       token: "vuetify-admin-token"
     }
   }),

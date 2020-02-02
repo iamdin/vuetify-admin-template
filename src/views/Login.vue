@@ -82,16 +82,13 @@ export default {
         .dispatch("user/LOGIN", _this.loginForm)
         .then(res => {
           if (res.code === 200) {
-            setTimeout(() => {
-              _this.loginLoading = false;
-              _this.$router.push("/");
-            }, 1000);
+            _this.loginLoading = false;
+            _this.$router.push("/");
           } else {
             _this.snackbarShow(res.msg);
           }
         })
         .catch(err => {
-          console.error(err);
           _this.snackbarShow(err);
         })
         .finally(() => {
