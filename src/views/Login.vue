@@ -83,7 +83,7 @@ export default {
         .then(res => {
           if (res.code === 200) {
             _this.loginLoading = false;
-            _this.$router.push("/");
+            _this.$router.replace("/");
           } else {
             _this.snackbarShow(res.msg);
           }

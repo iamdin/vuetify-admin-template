@@ -33,10 +33,11 @@ export default {
         });
     });
   },
-  FONT_LOGIN_OUT({ commit }) {
+  FONT_LOGOUT({ commit }) {
     return new Promise(resolve => {
       removeToken();
       commit("SET_TOKEN", "");
+      commit("SET_INFO", {});
       resolve();
     });
   }

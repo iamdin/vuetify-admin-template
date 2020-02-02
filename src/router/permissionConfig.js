@@ -28,7 +28,6 @@ router.beforeEach(async (to, from, next) => {
               .dispatch("permission/GENERATE_ROUTES", roles)
               .then(() => {
                 router.addRoutes(store.getters["permission/asyncRoutes"]); // 动态添加可访问路由表
-                console.log(router);
                 next(to.path);
               });
           })

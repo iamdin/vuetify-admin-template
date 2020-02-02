@@ -34,17 +34,12 @@ export default [
     meta: { roles: ["admin"] },
     children: [
       {
-        path: "github",
+        path: "",
         name: "Github",
         meta: { title: "Github", icon: "mdi-github-circle" },
         component: () =>
           import(/* webpackChunkName: "Github" */ "@/views/Github")
       }
     ]
-  },
-  {
-    path: "*",
-    redirect: "/404",
-    hideInMenu: true
   }
 ];
