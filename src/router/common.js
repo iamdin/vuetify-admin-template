@@ -30,8 +30,8 @@ export default [
   },
   {
     path: "/github",
+    redirect: "/github/",
     component: Layout,
-    meta: { roles: ["admin"] },
     children: [
       {
         path: "",

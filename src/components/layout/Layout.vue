@@ -6,8 +6,8 @@
     <navigation-bar />
     <!--  内容区  -->
     <v-content>
-      <breadcrumbs />
-      <v-container fluid class="ml-4">
+      <breadcrumbs class="ml-2" />
+      <v-container fluid class="ml-5">
         <v-scroll-x-transition mode="out-in">
           <keep-alive> <router-view /></keep-alive>
         </v-scroll-x-transition>

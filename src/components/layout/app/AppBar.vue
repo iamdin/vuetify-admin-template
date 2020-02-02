@@ -35,6 +35,8 @@
 </template>
 
 <script>
+import ScreenFull from "../screenFull/ScreenFull";
+
 export default {
   name: "AppBar",
   methods: {
@@ -46,7 +48,8 @@ export default {
         this.$router.replace("/login");
       });
     }
-  }
+  },
+  components: { ScreenFull }
 };
 </script>
 

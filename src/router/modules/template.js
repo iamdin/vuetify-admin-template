@@ -7,16 +7,15 @@ export default [
     meta: {
       title: "Examples",
       icon: "mdi-folder-table",
-      roles: ["admin"]
+      isGroup: true // 在根据角色筛选路由时，若原本有两个子路由，筛选后剩余一个，可保证父路由渲染为分组
     },
-    redirect: { name: "Form" },
     component: () =>
       import(/* webpackChunkName: "Layout" */ "@/components/layout/Layout"),
     children: [
       {
         path: "form",
         name: "Form",
-        meta: { title: "Form", icon: "mdi-id-card", roles: ["user"] },
+        meta: { title: "Form", icon: "mdi-id-card", roles: ["root"] },
         component: () =>
           import(/* webpackChunkName: "Form" */ "@/views/examples/Form")
       },
@@ -34,25 +33,23 @@ export default [
     name: "Nested",
     meta: {
       title: "Nested",
-      icon: "mdi-xbox-controller-menu",
-      roles: ["editor"]
+      icon: "mdi-xbox-controller-menu"
     },
-    redirect: { name: "Menu1" },
     component: () =>
       import(/* webpackChunkName: "Layout" */ "@/components/layout/Layout"),
     children: [
       {
         path: "menu1",
         name: "Menu1",
-        meta: { title: "Menu1", roles: ["super_admin"] },
+        meta: { title: "Menu1" },
         component: () =>
           import(/* webpackChunkName: "Menu1" */ "@/views/nested/Menu1")
       },
+
       {
         path: "menu2",
         name: "Menu2",
         meta: { title: "Menu2", icon: "mdi-menu" },
-        redirect: { name: "Menu2_1" },
         component: renderRouterView,
         children: [
           {
@@ -67,8 +64,11 @@ export default [
           {
             path: "menu2_2",
             name: "Menu2_2",
-            meta: { title: "Menu2-2", icon: "mdi-menu" },
-            redirect: { name: "Menu2_2_1" },
+            meta: {
+              title: "Menu2-2",
+              icon: "mdi-menu",
+              roles: ["root"]
+            },
             component: renderRouterView,
             children: [
               {

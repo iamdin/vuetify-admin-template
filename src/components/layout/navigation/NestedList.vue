@@ -78,7 +78,11 @@ export default {
      * @returns {boolean|boolean}
      */
     hasRouteChildren(route) {
-      return route.hasOwnProperty("children") && route.children.length > 1;
+      // 在根据角色筛选路由时，若原本有两个子路由，筛选后剩余一个，可保证父路由渲染为分组
+      if (route.meta && route.meta.isGroup) {
+        return true;
+      }
+      return route.children && route.children.length > 1;
     },
     /**
      * 根据当前路径对象是否含有children属性，来配置 list-item 的文本及图标
@@ -87,7 +91,7 @@ export default {
      * @returns {string}
      */
     listItemConfig(route, property) {
-      return route.hasOwnProperty("children")
+      return route.children
         ? route.children[0]["meta"][property]
         : route.meta[property];
     },
@@ -98,9 +102,7 @@ export default {
      */
     routeNameTo(route) {
       return {
-        name: route.hasOwnProperty("children")
-          ? route.children[0].name
-          : route.name
+        name: route.children ? route.children[0].name : route.name
       };
     }
   }

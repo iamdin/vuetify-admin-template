@@ -11,7 +11,7 @@ export default {
   getUserInfo: Mock.mock("/userInfo", {
     code: 200,
     data: {
-      roles: ["super_admin", "editor"],
+      roles: ["admin"],
       name: "@NAME",
       avatar:
         "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif"
