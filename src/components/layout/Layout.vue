@@ -6,7 +6,8 @@
     <navigation-bar />
     <!--  内容区  -->
     <v-content>
-      <v-container fluid class="mt-4 ml-4">
+      <breadcrumbs />
+      <v-container fluid class="ml-4">
         <v-scroll-x-transition mode="out-in">
           <keep-alive> <router-view /></keep-alive>
         </v-scroll-x-transition>
@@ -18,10 +19,11 @@
 <script>
 import NavigationBar from "./navigation/NavigationBar";
 import AppBar from "./app/AppBar";
+import Breadcrumbs from "./breadcrumbs/Breadcrumbs";
 
 export default {
   name: "Layout",
-  components: { NavigationBar, AppBar }
+  components: { NavigationBar, AppBar, Breadcrumbs }
 };
 </script>
 
