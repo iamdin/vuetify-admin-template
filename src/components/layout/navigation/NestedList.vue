@@ -10,7 +10,7 @@
       >
         <template #activator>
           <v-list-item-icon v-if="route.meta.icon">
-            <v-icon>{{ route.meta.icon }}</v-icon>
+            <v-icon>{{ `mdi-${route.meta.icon}` }}</v-icon>
           </v-list-item-icon>
           <v-list-item-title>{{ route.meta.title }}</v-list-item-title>
         </template>
@@ -27,7 +27,7 @@
           :color="activeColor"
         >
           <v-list-item-icon v-if="listItemConfig(route, 'icon')">
-            <v-icon>{{ listItemConfig(route, "icon") }}</v-icon>
+            <v-icon>{{ `mdi-${listItemConfig(route, "icon")}` }}</v-icon>
           </v-list-item-icon>
           <v-list-item-title v-if="listItemConfig(route, 'title')">
             {{ listItemConfig(route, "title") }}</v-list-item-title

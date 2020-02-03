@@ -22,7 +22,7 @@ export default [
       {
         path: "dashboard",
         name: "Dashboard",
-        meta: { title: "Dashboard", icon: "mdi-view-dashboard" },
+        meta: { title: "Dashboard", icon: "view-dashboard" },
         component: () =>
           import(/* webpackChunkName: "Dashboard" */ "@/views/Dashboard")
       }
@@ -36,7 +36,7 @@ export default [
       {
         path: "",
         name: "Github",
-        meta: { title: "Github", icon: "mdi-github-circle" },
+        meta: { title: "Github", icon: "github-circle" },
         component: () =>
           import(/* webpackChunkName: "Github" */ "@/views/Github")
       }

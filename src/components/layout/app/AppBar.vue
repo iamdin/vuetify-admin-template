@@ -1,16 +1,18 @@
 <template>
   <v-app-bar app color="blue darken-3" dark>
-    <v-app-bar-nav-icon @click.stop="navIconClick" />
+    <v-app-bar-nav-icon @click.stop="navIconClick">
+      <svg-icon name="menu" />
+    </v-app-bar-nav-icon>
     <v-toolbar-title class="ml-0 pl-4">
       <span class="hidden-xs-only">Vuetify-Admin-Template</span>
     </v-toolbar-title>
     <v-spacer />
 
     <v-btn icon>
-      <v-icon>mdi-apps</v-icon>
+      <svg-icon name="apps" />
     </v-btn>
     <v-btn icon>
-      <v-icon>mdi-bell</v-icon>
+      <svg-icon name="bell" />
     </v-btn>
     <v-menu
       transition="slide-y-transition"
@@ -35,10 +37,11 @@
 </template>
 
 <script>
-import ScreenFull from "../screenFull/ScreenFull";
+import SvgIcon from "../../svgIcon/SvgIcon";
 
 export default {
   name: "AppBar",
+  data: () => ({}),
   methods: {
     navIconClick() {
       this.$store.commit("REVERSE_DRAWER");
@@ -49,7 +52,9 @@ export default {
       });
     }
   },
-  components: { ScreenFull }
+  components: {
+    SvgIcon
+  }
 };
 </script>
 
