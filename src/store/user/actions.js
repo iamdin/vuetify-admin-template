@@ -36,8 +36,7 @@ export default {
   FONT_LOGOUT({ commit }) {
     return new Promise(resolve => {
       removeToken();
-      commit("SET_TOKEN", "");
-      commit("SET_INFO", {});
+      commit("FONT_LOGOUT");
       resolve();
     });
   }
