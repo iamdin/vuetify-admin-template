@@ -4,6 +4,7 @@ export default [
   {
     path: "/examples",
     name: "Examples",
+    redirect: { name: "Form" },
     meta: {
       title: "Examples",
       icon: "folder-table",
@@ -31,6 +32,7 @@ export default [
   {
     path: "/nested",
     name: "Nested",
+    redirect: { name: "Menu1" },
     meta: {
       title: "Nested",
       icon: "xbox-controller-menu"
@@ -49,6 +51,7 @@ export default [
       {
         path: "menu2",
         name: "Menu2",
+        redirect: { name: "Menu2_1" },
         meta: { title: "Menu2", icon: "menu" },
         component: renderRouterView,
         children: [
@@ -64,6 +67,7 @@ export default [
           {
             path: "menu2_2",
             name: "Menu2_2",
+            redirect: { name: "Menu2_2_1" },
             meta: {
               title: "Menu2-2",
               icon: "menu",
