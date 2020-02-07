@@ -14,10 +14,7 @@ import NestedList from "./NestedList";
 
 export default {
   name: "NavigationBar",
-  components: { NestedList },
-  created() {
-    console.log(this.$store.getters["permission/routes"]);
-  }
+  components: { NestedList }
 };
 </script>
 
