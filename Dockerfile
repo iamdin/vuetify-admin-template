@@ -1,9 +1,4 @@
-FROM node:10
-COPY ./ /app
-WORKDIR /app
-RUN yarn && yarn run build
-
 FROM nginx
 RUN mkdir /app
-COPY --from=0 /app/dist /app
+COPY ./dist /app/vuetify-admin-template
 COPY nginx.conf /etc/nginx/nginx.conf

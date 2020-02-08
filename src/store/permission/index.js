@@ -9,7 +9,6 @@ export default {
   },
   mutations: {
     SET_ROUTES: (state, routes) => {
-      console.log(routes);
       routes.push(NotFound);
       state.asyncRoutes = routes;
       state.routes = constRouteMap.concat(routes);
