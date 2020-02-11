@@ -30,7 +30,7 @@ export default {
     screenFull() {
       if (!screenfull.isEnabled) {
         // 如果不允许进入全屏，发出不允许提示
-        alert("Your browser does not support!");
+        alert("Your browser does not support screenfull!");
         return false;
       }
       this.isScreenFull = !this.isScreenFull;

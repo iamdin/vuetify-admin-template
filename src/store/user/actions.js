@@ -19,8 +19,7 @@ export default {
   GET_USER_INFO({ commit }) {
     return new Promise((resolve, reject) => {
       getUserInfo()
-        .then(res => {
-          const { data } = res;
+        .then(({ data }) => {
           if (data.roles && data.roles.length > 0) {
             commit("SET_INFO", data);
           } else {

@@ -31,9 +31,9 @@ router.beforeEach(async (to, from, next) => {
                 next(to.path);
               });
           })
-          .catch(async err => {
+          .catch(async (err = "认证失败，请重新登陆") => {
             await store.dispatch("user/FONT_LOGOUT").then(() => {
-              alert(err || "认证失败，请重新登陆");
+              alert(err);
               next("/login");
               NProgress.done();
             });
@@ -47,6 +47,7 @@ router.beforeEach(async (to, from, next) => {
     } else {
       next("/login");
     }
+    NProgress.done();
   }
 });
 

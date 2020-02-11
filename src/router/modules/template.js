@@ -1,6 +1,6 @@
 const renderRouterView = { render: h => h("router-view") };
 
-// children 中对象大于2是 添加 isGroup: true
+//
 
 export default [
   {
