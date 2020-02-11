@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["Menu2_3"],{e049:function(e,n,t){"use strict";t.r(n);var u=function(){var e=this,n=e.$createElement,t=e._self._c||n;return t("h1",[e._v("Menu2-3")])},a=[],c={name:"Menu2_3"},r=c,s=t("2877"),l=Object(s["a"])(r,u,a,!1,null,"5b52eb3e",null);n["default"]=l.exports}}]);
+//# sourceMappingURL=Menu2_3.d4035a7b.js.map

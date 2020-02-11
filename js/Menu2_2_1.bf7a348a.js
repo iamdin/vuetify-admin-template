@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["Menu2_2_1"],{f323:function(e,n,t){"use strict";t.r(n);var u=function(){var e=this,n=e.$createElement;e._self._c;return e._m(0)},r=[function(){var e=this,n=e.$createElement,t=e._self._c||n;return t("div",[t("h1",[e._v("Menu2-2-1")])])}],a={name:"Menu2_2_1",data:function(){return{}}},c=a,f=t("2877"),i=Object(f["a"])(c,u,r,!1,null,"6bfa8f71",null);n["default"]=i.exports}}]);
+//# sourceMappingURL=Menu2_2_1.bf7a348a.js.map

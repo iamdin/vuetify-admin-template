@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["NotFound"],{9703:function(t,n,e){"use strict";e.r(n);var o=function(){var t=this,n=t.$createElement,e=t._self._c||n;return e("div",{attrs:{align:"center"}},[e("h1",[t._v("NotFound")]),e("v-btn",{attrs:{text:"",to:{name:"Dashboard"}}},[t._v("Back To Home ")])],1)},a=[],r={name:"NotFound"},s=r,u=e("2877"),c=e("6544"),d=e.n(c),i=e("8336"),l=Object(u["a"])(s,o,a,!1,null,"6f8982e8",null);n["default"]=l.exports;d()(l,{VBtn:i["a"]})}}]);
+//# sourceMappingURL=NotFound.d9136cc8.js.map
