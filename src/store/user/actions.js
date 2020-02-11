@@ -24,7 +24,7 @@ export default {
           if (data.roles && data.roles.length > 0) {
             commit("SET_INFO", data);
           } else {
-            reject("getInfo: roles must be a non-null array !");
+            reject("获取用户信息失败！");
           }
           resolve(data);
         })

@@ -1,5 +1,7 @@
 const renderRouterView = { render: h => h("router-view") };
 
+// children 中对象大于2是 添加 isGroup: true
+
 export default [
   {
     path: "/examples",
@@ -8,6 +10,7 @@ export default [
     meta: {
       title: "Examples",
       icon: "folder-table",
+      roles: ["admin"],
       isGroup: true // 在根据角色筛选路由时，若原本有两个子路由，筛选后剩余一个，可保证父路由渲染为分组
     },
     component: () =>
@@ -35,7 +38,9 @@ export default [
     redirect: { name: "Menu1" },
     meta: {
       title: "Nested",
-      icon: "xbox-controller-menu"
+      icon: "xbox-controller-menu",
+      roles: ["admin"],
+      isGroup: true
     },
     component: () =>
       import(/* webpackChunkName: "Layout" */ "@/components/layout/Layout"),
@@ -52,7 +57,7 @@ export default [
         path: "menu2",
         name: "Menu2",
         redirect: { name: "Menu2_1" },
-        meta: { title: "Menu2", icon: "menu" },
+        meta: { title: "Menu2", icon: "menu", isGroup: true },
         component: renderRouterView,
         children: [
           {
@@ -71,7 +76,8 @@ export default [
             meta: {
               title: "Menu2-2",
               icon: "menu",
-              roles: ["root"]
+              roles: ["root"],
+              isGroup: true
             },
             component: renderRouterView,
             children: [
