@@ -8,6 +8,7 @@
     </v-toolbar-title>
     <v-spacer />
 
+    <screen-full />
     <v-btn icon>
       <svg-icon name="apps" />
     </v-btn>
@@ -23,8 +24,8 @@
       <template v-slot:activator="{ on }">
         <v-btn icon large color="primary" dark v-on="on">
           <v-avatar size="32px" item>
-            <v-img :src="$store.getters[`user/userAvatar`]" alt="Vuetify"
-          /></v-avatar>
+            <v-img :src="$store.getters[`user/userAvatar`]" alt="Vuetify" />
+          </v-avatar>
         </v-btn>
       </template>
       <v-list dense>
@@ -38,6 +39,7 @@
 
 <script>
 import SvgIcon from "../../svgIcon/SvgIcon";
+import ScreenFull from "../screenFull/ScreenFull";
 
 export default {
   name: "AppBar",
@@ -54,7 +56,8 @@ export default {
     }
   },
   components: {
-    SvgIcon
+    SvgIcon,
+    ScreenFull
   }
 };
 </script>

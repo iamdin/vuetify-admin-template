@@ -2,7 +2,8 @@
   <v-tooltip bottom>
     <template v-slot:activator="{ on }">
       <v-btn icon v-on="on" @click.native="screenFull">
-        <v-icon color="white">mdi-fullscreen</v-icon>
+        <svg-icon v-show="!isScreenFull" name="fullscreen" />
+        <svg-icon v-show="isScreenFull" name="fullscreen_exit" />
       </v-btn>
     </template>
     <span>{{ content }}</span>
@@ -11,12 +12,13 @@
 
 <script>
 import screenfull from "screenfull";
+import SvgIcon from "../../svgIcon/SvgIcon";
 export default {
   name: "index",
+  components: { SvgIcon },
   data() {
     return {
-      isScreenFull: false,
-      screenfull: screenfull
+      isScreenFull: false
     };
   },
   computed: {
@@ -26,17 +28,18 @@ export default {
   },
   methods: {
     screenFull() {
-      this.isScreenFull = !this.isScreenFull;
-      if (!this.screenfull.enabled) {
+      if (!screenfull.isEnabled) {
         // 如果不允许进入全屏，发出不允许提示
+        alert("Your browser does not support!");
         return false;
       }
-      this.screenfull.toggle();
+      this.isScreenFull = !this.isScreenFull;
+      screenfull.toggle();
     }
   },
   mounted() {
-    this.screenfull.onchange(() => {
-      this.isScreenFull = this.screenfull.isFullscreen;
+    screenfull.onchange(() => {
+      this.isScreenFull = screenfull.isFullscreen;
     });
   }
 };
