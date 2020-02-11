@@ -2,7 +2,15 @@ const Mock = require("mockjs");
 const Random = Mock.Random;
 Random.extend({
   roles: function() {
-    const roles = ["root", "admin", "user"];
+    const roles = [
+      ["root"],
+      ["admin"],
+      ["user"],
+      ["root", "user"],
+      ["root", "admin"],
+      ["admin", "user"],
+      ["root", "admin", "user"]
+    ];
     return this.pick(roles);
   }
 });
@@ -18,7 +26,7 @@ export default {
   getUserInfo: Mock.mock("/userInfo", {
     code: 200,
     data: {
-      roles: ["@ROLES"],
+      roles: "@ROLES",
       name: "@NAME",
       avatar:
         // "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif"
