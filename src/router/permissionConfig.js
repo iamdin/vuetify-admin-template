@@ -32,9 +32,10 @@ router.beforeEach(async (to, from, next) => {
               });
           })
           .catch(async err => {
-            await store.dispatch("user/FONT_LOGIN_OUT").then(() => {
+            await store.dispatch("user/FONT_LOGOUT").then(() => {
               alert(err || "认证失败，请重新登陆");
               next("/login");
+              NProgress.done();
             });
           });
       }
