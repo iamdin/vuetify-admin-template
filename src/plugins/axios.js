@@ -2,16 +2,21 @@
 
 import Vue from "vue";
 import axios from "axios";
+import { getToken } from "../util/cookie";
 
 // Full config:  https://github.com/axios/axios#request-config
 // axios.defaults.baseURL = process.env.baseURL || process.env.apiUrl || '';
 // axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
-// axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+// axios.defaults.headers.post["Content-Type"] = "application/json";
 
 let config = {
-  // baseURL: process.env.baseURL || process.env.apiUrl || ""
+  baseURL: process.env.VUE_APP_APIURL || process.env.apiUrl || "",
   // timeout: 60 * 1000, // Timeout
-  // withCredentials: true, // Check cross-site Access-Control
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: getToken()
+  },
+  withCredentials: true // Check cross-site Access-Control
 };
 
 const _axios = axios.create(config);
@@ -19,6 +24,9 @@ const _axios = axios.create(config);
 _axios.interceptors.request.use(
   function(config) {
     // Do something before request is sent
+    if (process.env.NODE_ENV === "development") {
+      console.log(config);
+    }
     return config;
   },
   function(error) {
@@ -31,6 +39,9 @@ _axios.interceptors.request.use(
 _axios.interceptors.response.use(
   function(response) {
     // Do something with response data
+    if (process.env.NODE_ENV === "development") {
+      console.log(response);
+    }
     return response.data;
   },
   function(error) {

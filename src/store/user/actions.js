@@ -6,6 +6,7 @@ export default {
     return new Promise((resolve, reject) => {
       login(payload)
         .then(res => {
+          if (res.code !== 200) reject(res);
           const { token } = res.data;
           commit("SET_TOKEN", token);
           setToken(token);

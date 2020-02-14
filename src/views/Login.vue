@@ -12,11 +12,11 @@
               <v-card-text>
                 <v-form ref="login_form">
                   <v-text-field
-                    label="Username"
-                    name="username"
+                    label="account"
+                    name="account"
                     prepend-icon="mdi-account"
                     type="text"
-                    v-model="loginForm.username"
+                    v-model="loginForm.account"
                     :rules="[rules.required]"
                   ></v-text-field>
 
@@ -35,23 +35,16 @@
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn
-                  :loading="loginLoading"
-                  color="primary"
-                  @click="userLogin"
-                  >Login</v-btn
-                >
+                <v-btn :loading="loginLoading" color="primary" @click="userLogin">Login</v-btn>
               </v-card-actions>
             </v-card>
           </v-flex>
         </v-layout>
       </v-container>
     </v-content>
-    <v-snackbar top color="primary" v-model="snackbar">
-      {{ snackbarText }}
-      <v-btn text @click="snackbar = false">
-        Close
-      </v-btn>
+    <v-snackbar top :color="snackbar.color" v-model="snackbar.show">
+      {{ snackbar.text }}
+      <v-btn text @click="snackbar.show = false">Close</v-btn>
     </v-snackbar>
   </v-app>
 </template>
@@ -63,14 +56,17 @@ export default {
     passwordDisplay: false,
     loginLoading: false,
     loginForm: {
-      username: "admin",
-      password: "123456"
+      account: "admin",
+      password: "admin"
     },
     rules: {
       required: value => !!value || "Required."
     },
-    snackbar: false,
-    snackbarText: ""
+    snackbar: {
+      show: false,
+      text: "",
+      color: "primary"
+    }
   }),
   methods: {
     userLogin() {
@@ -85,19 +81,22 @@ export default {
             _this.loginLoading = false;
             _this.$router.replace("/");
           } else {
-            _this.snackbarShow(res.msg);
+            console.error(res); // _this.snackbarShow(res.msg);
           }
         })
-        .catch(err => {
-          _this.snackbarShow(err);
+        .catch(({ msg }) => {
+          _this.snackbarShow(msg, "error");
         })
         .finally(() => {
           _this.loginLoading = false;
         });
     },
-    snackbarShow(text) {
-      this.snackbar = true;
-      this.snackbarText = text;
+    snackbarShow(text, color) {
+      this.snackbar = {
+        show: true,
+        text,
+        color
+      };
     }
   }
 };

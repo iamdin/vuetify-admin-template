@@ -5,5 +5,17 @@ module.exports = {
   transpileDependencies: ["vuetify"],
   chainWebpack: config => {
     config.plugins.delete("prefetch");
+  },
+  devServer: {
+    proxy: {
+      "/api": {
+        target: "http://webplus.top:8088",
+        ws: true,
+        changeOrigin: true,
+        pathRewrite: {
+          "^/api": ""
+        }
+      }
+    }
   }
 };

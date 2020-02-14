@@ -23,7 +23,7 @@ export default {
     }
   }),
   /** 获取用户信息 */
-  getUserInfo: Mock.mock("/userInfo", {
+  getUserInfo: Mock.mock("/user/info", {
     code: 200,
     data: {
       roles: "@ROLES",

@@ -9,7 +9,7 @@ const _axios = axios;
  * @returns {*}
  */
 export function login(data) {
-  return _axios.post("/login", data);
+  return _axios.post("/user/login", data);
 }
 
 /**
@@ -17,5 +17,5 @@ export function login(data) {
  * @returns {*}
  */
 export function getUserInfo() {
-  return _axios.get("/userInfo");
+  return _axios.get("/user/info");
 }
