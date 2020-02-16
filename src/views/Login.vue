@@ -35,7 +35,12 @@
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn :loading="loginLoading" color="primary" @click="userLogin">Login</v-btn>
+                <v-btn
+                  :loading="loginLoading"
+                  color="primary"
+                  @click="userLogin"
+                  >Login</v-btn
+                >
               </v-card-actions>
             </v-card>
           </v-flex>

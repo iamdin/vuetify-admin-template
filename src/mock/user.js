@@ -16,7 +16,7 @@ Random.extend({
 });
 export default {
   /** 用户登陆 */
-  login: Mock.mock("/login", {
+  login: Mock.mock("/user/login", {
     code: 200,
     data: {
       token: "vuetify-admin-token"
